@@ -1,0 +1,33 @@
+/* GPS_r
+ * Author: HOME
+ * Creation date: 13/06/2022
+ */
+
+REFINEMENT GPS_r
+REFINES GPS
+
+VARIABLES 
+receiver,status,satellite, position, signal
+
+INITIALISATION 
+receiver,satellite, position,status, signal:=0,0,0,On,0
+
+OPERATIONS
+Send =
+PRE status=On ∧ Signal = signal
+THEN satellite := minSignal - signal
+END;
+
+Receive=
+PRE maxSignal = 1575 or Signal = minSignal ∧ Signal ∈ ℕ
+THEN receiver := minSignal + signal
+END;
+
+
+Track =
+IF position = 0
+THEN status := On
+ELSE status:= Off
+END
+
+ END

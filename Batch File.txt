@@ -1,0 +1,44 @@
+#ifndef _GPS_h
+#define _GPS_h
+
+#include <stdint.h>
+#include <stdbool.h>
+#ifdef __cplusplus
+extern "C" {
+#endif /* __cplusplus */
+
+
+/* Clause SETS */
+typedef enum
+{
+    GPS__On,
+    GPS__Off
+    
+} GPS__STATUS;
+#define GPS_STATUS_max 2
+
+/* Clause CONCRETE_CONSTANTS */
+/* Basic constants */
+/* TO DO: #define GPS__minSignal */
+/* TO DO: #define GPS__maxSignal */
+/* TO DO: #define GPS__Position */
+/* TO DO: #define GPS__Signal */
+/* Array and record constants */
+
+
+/* Clause CONCRETE_VARIABLES */
+
+extern void GPS__INITIALISATION(void);
+
+/* Clause OPERATIONS */
+
+extern void GPS__Send(void);
+extern void GPS__Receive(void);
+extern void GPS__Track(void);
+
+#ifdef __cplusplus
+}
+#endif /* __cplusplus */
+
+
+#endif /* _GPS_h */

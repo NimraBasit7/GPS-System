@@ -1,0 +1,38 @@
+/* GPS_i
+ * Author: HOME
+ * Creation date: 14/06/2022
+ */
+
+IMPLEMENTATION GPS_i
+REFINES GPS_r
+VALUES
+ maxSignal=1575 ; minSignal=1227 ; Position = 0 ; Signal = 0
+CONCRETE_VARIABLES 
+receiver,status,satellite, position, signal
+
+
+INITIALISATION 
+receiver,satellite, position,status, signal:=0,0,0,On,0
+
+
+OPERATIONS
+Send =
+IF status=On ∧ Signal = signal
+THEN satellite := minSignal - signal
+END;
+
+
+Receive=
+IF maxSignal = 1575 or Signal = minSignal ∧ Signal ∈ ℕ
+THEN receiver := minSignal + signal
+END;
+
+
+
+Track =
+IF position = 0
+THEN status := On
+ELSE status:= Off
+END
+
+ END
